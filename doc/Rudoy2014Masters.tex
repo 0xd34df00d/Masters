@@ -2283,13 +2283,15 @@ L(x) = \prod_{i = 0}^\ell y_i \prod_{j = 0, j \neq i}^\ell \frac{x - x_j}{x_i - 
   \label{fig:lagrange_i_0}
 \end{figure}
 
-Отметим, что, кроме того, для достаточно малых $\sigma_n$ и $\sigma_\lambda$ выполняется
-следующее соотношение:
+Отметим, что, кроме того, для достаточно малых $\sigma_n$ и $\sigma_\lambda$
+следующее соотношение выполняется с точностью порядка $0.1\%$:
 \[
   \big(\sigma_{\omega_i}(\sigma_n, \sigma_{\lambda})\big)^2 =
   	\big(\sigma_{\omega_i}(\sigma_n, 0)\big)^2 +
-  	  \big(\sigma_{\omega_i}(0, \sigma_{\lambda})\big)^2.
+  	  \big(\sigma_{\omega_i}(0, \sigma_{\lambda})\big)^2,
 \]
+что соответствует равенству $\eqref{eq:pypha_variance}$ теоремы \ref{theorem:pypha}
+и подтверждает корректность предлагаемого метода.
 
 \subsubsection{Сходимость к теоретическому случаю}
 
