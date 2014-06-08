@@ -532,7 +532,7 @@ $\Sigma^{\mathbf{x}}$ и $\boldsymbol{\sigma}^y$ дисперсией:
 \[
   \acute{\mathcal{D}}_N (\Sigma^{\mathbf{x}}, \boldsymbol{\sigma}_y) = \{ \acute{D}_1 (\Sigma^{\mathbf{x}}, \boldsymbol{\sigma}_y), \dots, \acute{D}_N (\Sigma^{\mathbf{x}}, \boldsymbol{\sigma}_y) \},
 \]
-и пусть $\overline{\sigma}_i$~--- эмпирическое стандартное отклонение $i$-ой компоненты
+и пусть $\sigma_{\omega_i}$~--- эмпирическое стандартное отклонение $i$-ой компоненты
 векторной случайной величины
 $\Delta\hat{\boldsymbol{\omega}}_f(\acute{D} (\Sigma^{\mathbf{x}}, \boldsymbol{\sigma}_y) )$
 на множестве $\acute{\mathcal{D}}_N (\Sigma^{\mathbf{x}}, \boldsymbol{\sigma}_y)$.
@@ -542,7 +542,7 @@ $\omega_i$ относительно $\acute{\mathcal{D}}_N (\Sigma^{\mathbf{x}},
 при исходной обучающей выборке $D$ будем называть следующий вектор
 из $| \mathbf{x} | + 1$ компонент:
 \begin{equation}
-  \mathbf{T}^N_f(i) = \Big\{ \frac{\frac{\overline{\sigma}_i}{\hat{\omega}_i}}{r(\boldsymbol{\sigma}^\mathbf{x}_{\cdot 1}, \mathbf{x}_{\cdot 1})}, \dots, \frac{\frac{\overline{\sigma}_i}{\hat{\omega}_i}}{r(\boldsymbol{\sigma}^\mathbf{x}_{\cdot |\mathbf{x}|}, \mathbf{x}_{\cdot |\mathbf{x}|})}, \frac{\frac{\overline{\sigma}_i}{\hat{\omega}_i}}{r(\boldsymbol{\sigma}^y, \mathbf{y})} \Big\},
+  \mathbf{T}^N_f(i) = \Big\{ \frac{\frac{\sigma_{\omega_i}}{\hat{\omega}_i}}{r(\boldsymbol{\sigma}^\mathbf{x}_{\cdot 1}, \mathbf{x}_{\cdot 1})}, \dots, \frac{\frac{\sigma_{\omega_i}}{\hat{\omega}_i}}{r(\boldsymbol{\sigma}^\mathbf{x}_{\cdot |\mathbf{x}|}, \mathbf{x}_{\cdot |\mathbf{x}|})}, \frac{\frac{\sigma_{\omega_i}}{\hat{\omega}_i}}{r(\boldsymbol{\sigma}^y, \mathbf{y})} \Big\},
   \label{eq:t_rel}
 \end{equation}
 где $r(\boldsymbol{\alpha}, \mathbf{a}) = r(\frac{\alpha_1}{a_1}, \dots, \frac{\alpha_{|\boldsymbol{\alpha}|}}{a_{|\mathbf{a}|}})$~---
@@ -568,7 +568,7 @@ $\omega_i$ относительно $\acute{\mathcal{D}}_N (\Sigma^{\mathbf{x}},
 В частности, в искомой задаче восстановления дисперсионной зависимости для неизменной
 относительной ошибки эксперимента:
 \[
-  \mathbf{T}_f(i) = \Big\{ \frac{\frac{\overline{\sigma}_i}{\hat{\omega}_i}}{\frac{\sigma_n}{n}}, \frac{\frac{\overline{\sigma}_i}{\hat{\omega}_i}}{\frac{\sigma_{\lambda}}{\lambda}} \Big\}.
+  \mathbf{T}_f(i) = \Big\{ \frac{\frac{\sigma_{\omega_i}}{\hat{\omega}_i}}{\frac{\sigma_n}{n}}, \frac{\frac{\sigma_{\omega_i}}{\hat{\omega}_i}}{\frac{\sigma_{\lambda}}{\lambda}} \Big\}.
 \]
 
 Матрицу, столбцами которой являются векторы $\mathbf{T}_f(i) \mid i \in \{ 1, \dots, l_f \}$,
