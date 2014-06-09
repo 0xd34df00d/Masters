@@ -56,16 +56,25 @@
   \end{itemize}
 \end{frame}
 
-\begin{frame}{Постановка задачи}
-  \[
-	D = \{ \mathbf{x}_i, y_i \} \mid i \in \{ 1, \dots, \ell \}.
-  \]
+\begin{frame}{Постановка задачи исследования устойчивости}
+  Дано:
+  \begin{itemize}
+   \item Обучающая выборка $D$:
+     \[
+	   D = \{ \mathbf{x}_i, y_i \} \mid i \in \{ 1, \dots, \ell \}.
+     \]
+   \item Семейство $\mathcal{F}$ параметрических функций $f = f(\mathbf{x}, \boldsymbol{\omega})$.
+   \item Функционал качества $S$:
+     \[
+       S = S (f (\cdot, \boldsymbol{\omega}), D) \mid f \in \mathcal{F}, \quad S \rightarrow \mathop{\min}\limits_{\boldsymbol{\omega}}
+     \]
+  \end{itemize}
   
-  \[
-    S(f, D) = \sum_{i = 1}^\ell (f(\mathbf{x}_i) - y_i)^2 \rightarrow \mathop{\min}\limits_{f \in \mathcal{F}}.
-  \]
-  
-  Требуется: исследовать влияние погрешностей в $D$ на $f$.
+  Требуется:
+  \begin{itemize}
+    \item Исследовать зависимость $\hat{\boldsymbol{\omega}} = \mathop{\arg \min}\limits_{\boldsymbol{\omega}} S$ от вариации $D$.
+    \item Проверить возможность экспертного применения $f$ при данной вариации $D$.
+  \end{itemize}
 \end{frame}
 
 \begin{frame}{Известные результаты}
