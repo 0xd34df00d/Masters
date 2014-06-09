@@ -1,0 +1,18 @@
+
+\begin{tikzpicture}[>=latex,line join=bevel,scale=0.4,transform shape]
+%%
+\node (Mul) at (96bp,188bp) [draw,circle,n] {$\bullet \times \bullet$};
+  \node (Pow) at (205bp,496bp) [draw,circle,n] {$\bullet ^ \bullet$};
+  \node (X) at (59bp,28bp) [draw,circle,n] {$$x$$};
+  \node (Y) at (133bp,28bp) [draw,circle,n] {$$y$$};
+  \node (C2) at (241bp,188bp) [draw,circle,n] {$1.36$};
+  \node (Div) at (168bp,351bp) [draw,circle,n] {$\div$};
+  \node (C1) at (242bp,351bp) [draw,circle,n] {$0.48$};
+  \draw [->] (Pow) ..controls (182.46bp,407.88bp) and (179.32bp,395.75bp)  .. (Div);
+  \draw [->] (Pow) ..controls (226.96bp,410.13bp) and (229.53bp,400.21bp)  .. (C1);
+  \draw [->] (Mul) ..controls (120.13bp,83.941bp) and (122.46bp,74.026bp)  .. (Y);
+  \draw [->] (Mul) ..controls (71.866bp,83.941bp) and (69.544bp,74.026bp)  .. (X);
+  \draw [->] (Div) ..controls (153.12bp,316.74bp) and (146.37bp,301.63bp)  .. (Mul);
+  \draw [->] (Div) ..controls (185.64bp,315.91bp) and (194.04bp,299.13bp)  .. (201bp,284bp) .. controls (209.58bp,265.34bp) and (218.51bp,244.32bp)  .. (C2);
+%
+\end{tikzpicture}

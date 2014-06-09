@@ -1,0 +1,20 @@
+
+\begin{tikzpicture}[>=latex,line join=bevel,scale=0.4,transform shape]
+%%
+\node (Asin) at (250bp,194bp) [draw,circle,n] {$\arcsin$};
+  \node (Pow) at (238bp,596bp) [draw,circle,n] {$\bullet ^ \bullet$};
+  \node (Plus) at (173bp,404bp) [draw,circle,n] {$\bullet + \bullet$};
+  \node (C2) at (303bp,404bp) [draw,circle,n] {$-0.48$};
+  \node (Y1) at (135bp,31bp) [draw,circle,n] {$$y$$};
+  \node (Mul) at (96bp,194bp) [draw,circle,n] {$\bullet \times \bullet$};
+  \node (C1) at (58bp,31bp) [draw,circle,n] {$15.8$};
+  \node (Y2) at (250bp,31bp) [draw,circle,n] {$$y$$};
+  \draw [->] (Plus) ..controls (141.78bp,318.68bp) and (137.17bp,306.21bp)  .. (Mul);
+  \draw [->] (Pow) ..controls (209.2bp,510.8bp) and (205.18bp,499.08bp)  .. (Plus);
+  \draw [->] (Mul) ..controls (121.2bp,88.985bp) and (123.85bp,78.02bp)  .. (Y1);
+  \draw [->] (Asin) ..controls (250bp,128.18bp) and (250bp,94.467bp)  .. (Y2);
+  \draw [->] (Plus) ..controls (210.83bp,300.81bp) and (223.24bp,267.28bp)  .. (Asin);
+  \draw [->] (Mul) ..controls (71.744bp,90.23bp) and (69.434bp,80.442bp)  .. (C1);
+  \draw [->] (Pow) ..controls (271.7bp,496.49bp) and (281.23bp,468.64bp)  .. (C2);
+%
+\end{tikzpicture}

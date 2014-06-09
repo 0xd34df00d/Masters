@@ -1,0 +1,22 @@
+
+\begin{tikzpicture}[>=latex,line join=bevel,scale=0.4,transform shape]
+%%
+\node (N3) at (233bp,27bp) [draw,circle,n] {$3$};
+  \node (Frac) at (202bp,348bp) [draw,circle,n] {$\div$};
+  \node (Ln) at (50bp,174bp) [draw,circle,n] {$\ln \bullet$};
+  \node (Pow) at (202bp,174bp) [draw,circle,n] {$\bullet^{\bullet}$};
+  \node (Plus) at (140bp,516bp) [draw,circle,n] {$\bullet + \bullet$};
+  \node (X2) at (170bp,27bp) [draw,circle,n] {$x_2$};
+  \node (N2) at (322bp,174bp) [draw,circle,n] {$2$};
+  \node (X1) at (50bp,27bp) [draw,circle,n] {$x_1$};
+  \node (Sin) at (78bp,348bp) [draw,circle,n] {$\sin \bullet$};
+  \draw [->] (Pow) ..controls (222.26bp,78.236bp) and (225.03bp,65.283bp)  .. (N3);
+  \draw [->] (Frac) ..controls (202bp,308.41bp) and (202bp,288.57bp)  .. (Pow);
+  \draw [->] (Sin) ..controls (66.324bp,275.28bp) and (62.774bp,253.47bp)  .. (Ln);
+  \draw [->] (Plus) ..controls (108.7bp,431.19bp) and (104.3bp,419.42bp)  .. (Sin);
+  \draw [->] (Frac) ..controls (242.25bp,316.67bp) and (274.53bp,288.81bp)  .. (294bp,258bp) .. controls (304.9bp,240.75bp) and (312.07bp,218.79bp)  .. (N2);
+  \draw [->] (Ln) ..controls (50bp,103.89bp) and (50bp,81.77bp)  .. (X1);
+  \draw [->] (Plus) ..controls (175.03bp,421.2bp) and (183.42bp,398.76bp)  .. (Frac);
+  \draw [->] (Pow) ..controls (181.89bp,81.857bp) and (179.69bp,71.918bp)  .. (X2);
+%
+\end{tikzpicture}

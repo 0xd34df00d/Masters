@@ -1,0 +1,21 @@
+digraph G1 {
+  node [shape="circle",style="n"];
+
+  Pow [label="\bullet ^ \bullet"];
+  Div [label="\div"];
+  Mul [label="\bullet \times \bullet"];
+  X [label="$x$"];
+  Y [label="$y$"];
+  C1 [label="0.48"];
+  C2 [label="1.36"];
+
+  Pow -> Div;
+  Pow -> C1;
+
+  Div -> C2;
+  Div -> Mul;
+
+  Mul -> X;
+  Mul -> Y;
+}
+  

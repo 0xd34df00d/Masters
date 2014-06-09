@@ -1,0 +1,24 @@
+digraph G3 {
+  node [shape="circle",style="n"];
+
+  Pow [label="\bullet ^ \bullet"];
+  Plus [label="\bullet + \bullet"];
+  Mul [label="\bullet \times \bullet"];
+  C1 [label="15.8"];
+  Y1 [label="$y$"];
+  Asin [label="\arcsin"];
+  Y2 [label="$y$"];
+  C2 [label="-0.48"];
+
+  Pow -> Plus;
+  Pow -> C2;
+
+  Plus -> Mul;
+  Plus -> Asin;
+
+  Mul -> Y1;
+  Mul -> C1;
+
+  Asin -> Y2;
+}
+  

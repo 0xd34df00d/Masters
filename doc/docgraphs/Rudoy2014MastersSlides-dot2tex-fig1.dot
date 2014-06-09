@@ -1,0 +1,24 @@
+  digraph G1 {
+node [shape="circle",style="n"];
+
+Plus [label="\bullet + \bullet"];
+Sin [label="\sin \bullet"];
+Ln [label="\ln \bullet"];
+X1 [label="x_1"];
+Frac [label="\div"];
+Pow [label="\bullet^{\bullet}"];
+X2 [label="x_2"];
+N3 [label="3"];
+N2 [label="2"];
+
+Plus -> Sin;
+Sin -> Ln;
+Ln -> X1;
+
+Plus -> Frac;
+Frac -> Pow;
+Frac -> N2;
+
+Pow -> X2;
+Pow -> N3;
+  }

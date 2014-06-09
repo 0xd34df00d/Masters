@@ -1,0 +1,13 @@
+digraph G1 {
+  node [shape="circle",style="n"];
+
+  Pow [label="pow"];
+  Sin [label="\sin"];
+  C2 [label="2"];
+  t [label="t_1"];
+
+  Pow -> Sin;
+  Pow -> C2;
+  Sin -> t;
+}
+  
