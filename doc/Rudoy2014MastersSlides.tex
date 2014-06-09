@@ -272,12 +272,13 @@
 \end{frame}
 
 \begin{frame}{Лагранжева интерполяция}
+  Существенно переобученная модель:
   \[
     L(x) = \prod_{i = 0}^\ell y_i \prod_{j = 0, j \neq i}^\ell \frac{x - x_j}{x_i - x_j},
   \]
   \begin{figure}[h]
     \centering
-    \includegraphics[scale=0.7]{{figs/lagrange/p1.txt_coeff0.dat}.eps}
+    \includegraphics[scale=0.65]{{figs/lagrange/p1.txt_coeff0.dat}.eps}
     \caption{Поверхность стандартного отклонения коэффициента $\omega_0$.}
     \label{fig:lagrange_i_0}
   \end{figure}
