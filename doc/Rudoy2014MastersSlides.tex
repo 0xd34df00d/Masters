@@ -181,7 +181,7 @@
 
 \begin{frame}{Алгоритм порождения моделей}
   \[
-    Q_f = \frac{1}{1 + S_f} \left(\alpha + \frac{1 - \alpha}{1 + \text{exp} (\frac{C(f)}{\beta} - \tau)}\right).
+    Q(f) = \frac{1}{1 + S(f)} \left(\alpha + \frac{1 - \alpha}{1 + \text{exp} (\frac{C(f)}{\beta} - \tau)}\right).
   \]
   \begin{itemize}
     \item $\alpha$~--- влияние штрафа за сложность, $0 \ll \alpha < 1$,
@@ -211,6 +211,8 @@
 	30		& $n_2$				& $3.9 \cdot 10^{-9}$	& 31			& 0.031	\\ \hline
     \end{tabular}
   \end{table}
+  
+  Экспертное мнение: $n_2$ некорректна, нечетных степеней быть не может.
 \end{frame}
 
 \begin{frame}{Устойчивость моделей}
@@ -222,6 +224,8 @@
     \end{tabular}
     \caption{Графики стандартного отклонения первого коэффициента для моделей $n_1$ и $n_2$.}
   \end{table}
+  
+  Устойчивость второй модели в $\approx 40$ раз хуже.
 \end{frame}
 
 \begin{frame}{Устойчивость моделей}
@@ -259,6 +263,8 @@
     \end{tabular}
     \caption{Значения стандартного отклонения для коэффициентов модели $n_1$ для первого полимера в зависимости от относительных дисперсий $(\frac{\sigma_{\lambda}}{\lambda}, \frac{\sigma_n}{n})$.}
   \end{table}
+  
+  Модели разделимы: $\omega_1^1 - \omega_1^2 = 6.71 \cdot 10^{-3} >> \sigma_{\omega_1} = 1.19 \cdot 10^{-4}$.
 \end{frame}
 
 \begin{frame}{Лагранжева интерполяция}
