@@ -123,16 +123,16 @@
       \[
         \Delta\hat{\boldsymbol{\omega}}_f(\acute{D} (\Sigma^{\mathbf{x}}, \boldsymbol{\sigma}_y) ) = \hat{\boldsymbol{\omega}}_f(D) - \hat{\boldsymbol{\omega}}_f (\acute{D} (\Sigma^{\mathbf{x}}, \boldsymbol{\sigma}_y))
       \]
+     \item Шаги 3-5 повторяются $N$ раз:
+      \[
+        \acute{\mathcal{D}}_N (\Sigma^{\mathbf{x}}, \boldsymbol{\sigma}_y) = \{ \acute{D}_1 (\Sigma^{\mathbf{x}}, \boldsymbol{\sigma}_y), \dots, \acute{D}_N (\Sigma^{\mathbf{x}}, \boldsymbol{\sigma}_y) \}.
+      \]
    \end{enumerate}
 \end{frame}
 
 \begin{frame}{Предлагаемый алгоритм}
   \begin{enumerate}
     \setcounter{enumi}{5}
-    \item Шаги 3-5 повторяются $N$ раз:
-      \[
-        \acute{\mathcal{D}}_N (\Sigma^{\mathbf{x}}, \boldsymbol{\sigma}_y) = \{ \acute{D}_1 (\Sigma^{\mathbf{x}}, \boldsymbol{\sigma}_y), \dots, \acute{D}_N (\Sigma^{\mathbf{x}}, \boldsymbol{\sigma}_y) \}.
-      \]
     \item Вычисляется стандартное отклонение каждой компоненты вектора параметров:
       \[
         \sigma_{\omega_i} = \text{stddev} ((\Delta\hat{\boldsymbol{\omega}}_f)_i).
@@ -143,11 +143,14 @@
       \]
   \end{enumerate}
   
-  $r$ выбирается экспертом:
+  $r$ выбирается экспертом, например:
   \begin{itemize}
-    \item $r(a_1, \dots) = a_1$~--- случай равенства относительных погрешностей.
-    \item $r(a_1, a_2, \dots, a_{\ell}) = \frac{\sum_{i = 1}^{\ell} a_i}{\ell}$~--- средняя относительная погрешность.
+    \item $r(a_1, \dots) = a_1$~--- для равных относительных погрешностей;
+    \item $r(a_1, \dots, a_{\ell}) = \frac{\sum_{i = 1}^{\ell} a_i}{\ell}$~--- средняя относительная погрешность.
   \end{itemize}
+  
+  $T > 1 \Rightarrow$ относительная погрешность параметра больше относительной
+  погрешности в данных.
 \end{frame}
 
 \begin{frame}{Случай независимых коэффициентов}
