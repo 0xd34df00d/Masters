@@ -239,47 +239,6 @@
   \end{table}
 \end{frame}
 
-\begin{frame}{Линейная регрессия}
-  Пусть $E(\xi_i) = 0; D(\xi_i) = \sigma^2$, и:
-  \[
-    y_i = ax_i + b + \xi_i \mid i \in \{ 1, \dots, n \}.
-  \]
-  Перейдем к представлению
-  \[
-    y_i = a(x_i - \overline{x}) + b + \xi_i \mid i \in \{ 1, \dots, n \}.
-  \]
-  Тогда:
-  \[
-    D(a) = \frac{\sigma^2}{\sum_{i = 1}^n (x_i - \overline{x})^2}, \quad D(b) = \frac{\sigma^2}{n}.
-  \]
-  
-  Рассмотрим:
-  \[
-    \delta_1 = \frac{| \mathbf{T}^N_y(1) - D(a) |}{D(a)},
-  \]
-  \[
-    \delta_2 = \frac{| \mathbf{T}^N_y(2) - D(b) |}{D(b)}.
-  \]
-\end{frame}
-
-\begin{frame}{Сходимость к параметрам для линейной регрессии}
-\begin{figure}[h]
-  \centering
-  \includegraphics[scale=0.7]{figs/classic/variance_all_0_all.eps}
-  \caption{График зависимости $\delta$ от числа итераций (от 0 до $10^7$ итераций).}
-  \label{fig:classic_all_0_all}
-\end{figure}
-\end{frame}
-
-\begin{frame}{Сходимость к параметрам для линейной регрессии}
-\begin{figure}[h]
-  \centering
-  \includegraphics[scale=0.7]{figs/classic/variance_all_1000_all.eps}
-  \caption{График зависимости $\delta$ от числа итераций (от $10^6$ до $10^7$ итераций).}
-  \label{fig:classic_all_0_all}
-\end{figure}
-\end{frame}
-
 \begin{frame}{Лагранжева интерполяция}
   \[
     L(x) = \prod_{i = 0}^\ell y_i \prod_{j = 0, j \neq i}^\ell \frac{x - x_j}{x_i - x_j},
