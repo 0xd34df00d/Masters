@@ -89,44 +89,58 @@
 \end{frame}
 
 \begin{frame}{Предлагаемый алгоритм}
-  Устойчивость суперпозиции $f \in \mathcal{F}$:
   \begin{enumerate}
-    \item \[
-        \hat{\boldsymbol{\omega}}_f(D) = \mathop{\arg \min}\limits_{\boldsymbol{\omega}_f} S(f (\cdot, \omega_f), D).
+    \item Фиксируется параметрическая модель $f \in \mathcal{F}$:
+      \[
+        f = f(\mathbf{x}, \boldsymbol{\omega}) \in \mathcal{F}.
+      \]
+    \item Начальный оптимальный вектор параметров:
+      \[
+        \hat{\boldsymbol{\omega}}_f(D) = \mathop{\arg \min}\limits_{\boldsymbol{\omega}_f} S(f, D).
       \]
   \end{enumerate}
 \end{frame}
 
 \begin{frame}{Предлагаемый алгоритм}
-  Устойчивость суперпозиции $f \in \mathcal{F}$:
   \begin{enumerate}
-    \setcounter{enumi}{1}
-    \item \[
+    \setcounter{enumi}{2}
+    \item Варьируется выборка:
+      \[
         \acute{D}(\Sigma^{\mathbf{x}}, \boldsymbol{\sigma}^y) = \{ \mathbf{x}_i + \boldsymbol{\xi}^{\mathbf{x}}_i, y_i + \xi^y_i \mid i \in 1, \dots, \ell \}.
       \]
-    \item \[
+    \item Оптимальный вектор параметров для варьированной выборки $\acute{D}$:
+      \[
     		\hat{\boldsymbol{\omega}}_f (\acute{D} (\Sigma^{\mathbf{x}}, \boldsymbol{\sigma}_y)) = \mathop{\arg \min}\limits_{\boldsymbol{\omega}_f} S (f (\cdot, \boldsymbol{\omega}_f), \acute{D} (\Sigma^{\mathbf{x}}, \boldsymbol{\sigma}_y)).
       \]
-    \item \[
+    \item Разность с начальным оптимальным вектором $\hat{\boldsymbol{\omega}}_f$:
+      \[
         \Delta\hat{\boldsymbol{\omega}}_f(\acute{D} (\Sigma^{\mathbf{x}}, \boldsymbol{\sigma}_y) ) = \hat{\boldsymbol{\omega}}_f(D) - \hat{\boldsymbol{\omega}}_f (\acute{D} (\Sigma^{\mathbf{x}}, \boldsymbol{\sigma}_y))
       \]
    \end{enumerate}
 \end{frame}
 
 \begin{frame}{Предлагаемый алгоритм}
-  Устойчивость суперпозиции $f \in \mathcal{F}$:
   \begin{enumerate}
-    \setcounter{enumi}{4}   
-    \item \[
+    \setcounter{enumi}{5}
+    \item Шаги 3-5 повторяются $N$ раз:
+      \[
         \acute{\mathcal{D}}_N (\Sigma^{\mathbf{x}}, \boldsymbol{\sigma}_y) = \{ \acute{D}_1 (\Sigma^{\mathbf{x}}, \boldsymbol{\sigma}_y), \dots, \acute{D}_N (\Sigma^{\mathbf{x}}, \boldsymbol{\sigma}_y) \}.
       \]
-    \item \[
-        \sigma_{\omega_i} = \text{stddev} (\Delta\hat{\boldsymbol{\omega}}_f).
+    \item Вычисляется стандартное отклонение каждой компоненты вектора параметров:
+      \[
+        \sigma_{\omega_i} = \text{stddev} ((\Delta\hat{\boldsymbol{\omega}}_f)_i).
       \]
-    \item \[
-        \mathbf{T}^N_f(i, \Sigma^{\mathbf{x}}, \boldsymbol{\sigma}_y) = \Big\{ \frac{\frac{\sigma_{\omega_i}}{\hat{\omega}_i}}{r(\boldsymbol{\sigma}^\mathbf{x}_{\cdot 1}, \mathbf{x}_{\cdot 1})}, \dots, \frac{\frac{\sigma_{\omega_i}}{\hat{\omega}_i}}{r(\boldsymbol{\sigma}^\mathbf{x}_{\cdot |\mathbf{x}|}, \mathbf{x}_{\cdot |\mathbf{x}|})}, \frac{\frac{\sigma_{\omega_i}}{\hat{\omega}_i}}{r(\boldsymbol{\sigma}^y, \mathbf{y})} \Big\}
+    \item Устойчивость $i$-го параметра относительно компоненты $j$ описания:
+      \[
+        T^N_f(i, j, \Sigma^{\mathbf{x}}, \boldsymbol{\sigma}_y) = \frac{\frac{\sigma_{\omega_i}}{\hat{\omega}_i}}{r(\{\frac{\boldsymbol{\sigma}^\mathbf{x}_{k j}}{\mathbf{x}_{k j}}\}_{k = 1}^{\ell})}.
       \]
   \end{enumerate}
+  
+  $r$ выбирается экспертом:
+  \begin{itemize}
+    \item $r(a_1, \dots) = a_1$~--- случай равенства относительных погрешностей.
+    \item $r(a_1, a_2, \dots, a_{\ell}) = \frac{\sum_{i = 1}^{\ell} a_i}{\ell}$~--- средняя относительная погрешность.
+  \end{itemize}
 \end{frame}
 
 \begin{frame}{Случай независимых коэффициентов}
