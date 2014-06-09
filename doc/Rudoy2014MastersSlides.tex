@@ -34,7 +34,7 @@
 
 \begin{document}
 
-\title[Порождение и выбор моделей\hspace{4em}\insertframenumber/\inserttotalframenumber]{Алгоритмы индуктивного порождения и критерии выбора оптимальной существенно нелинейной регрессионной модели для аппроксимации измеряемых данных}
+\title[Порождение и выбор моделей\hspace{4em}\insertframenumber/\inserttotalframenumber]{Алгоритмы индуктивного порождения и критерии выбора оптимальной существенно нелинейной регрессионной модели}
 \author{Г. И. Рудой}
 \institute{Московский физико-технический институт \vfill
 Факультет управления и прикладной математики \vfill
@@ -48,11 +48,260 @@
 
 \begin{frame}{Цель работы}
   \begin{itemize}
+  	\item Разработка и анализ алгоритма порождения суперпозиций существенно нелинейных регрессионных моделей.
+	  \begin{itemize}
+		\item Доказательство существования данной суперпозиции.
+		\item Разработка практически реализуемого алгоритма.
+	  \end{itemize}
 	\item Формулирование и обоснование понятия устойчивости параметров моделей:
 	\begin{itemize}
 	  \item Критерий выбора моделей.
 	  \item Исследование погрешности в измеряемых данных.
 	\end{itemize}
+  \end{itemize}
+\end{frame}
+
+\begin{frame}{Постановка задачи выбора модели}
+  Дана выборка
+  \[
+  D = \{ (\mathbf{x}_i, y_i) \mid i \in \{1, \dots, N\},
+			  \mathbf{x}_i \in \mathbb{X} \subset \mathbb{R}^n,
+			  y_i \in \mathbb{Y} \subset \mathbb{R} \}.
+  \]
+  Для множества всех суперпозиций
+  \[
+  \mathcal{F} = \{ f_r \mid
+			  f_r : (\boldsymbol{\omega}, \mathbf{x}) \mapsto y \in \mathbb{Y},
+			  r \in \mathbb{N} \},
+  \]
+  требуется найти индекс $\hat{r}$ такой, что функция $f_{\hat{r}}$ доставляет
+  минимум функционалу качества $Q$:
+  \[
+  \hat{r} = \arg \min_{r \in \mathbb{N}} Q (f_r \mid \boldsymbol{\hat{\omega}_r}, D),
+  \]
+  \[
+  \boldsymbol{\hat{\omega}_r} = \arg \min_{\boldsymbol{\omega} \in \Omega} S(\boldsymbol{\omega} \mid f_r, D).
+  \]
+\end{frame}
+
+\begin{frame}{Символьная регрессия}
+  Аппроксимация выборки некоторой формулой:
+  \[
+  y = \sin x_1^2 + 2x_2.
+  \]
+
+  Методы:
+  \begin{itemize}
+	\item Генетические алгоритмы [Koza1998].
+	\item Аналитическое программирование [Zelinka2008, Webb2010].
+  \end{itemize}
+\end{frame}
+
+\begin{frame}{Проблемы аналитического программирования}
+  \frametitle{Проблемы аналитического программирования}
+
+  \begin{itemize}
+	\item Порождение рекурсивных суперпозиций:
+	  \[
+	  f = y + f (x, y).
+	  \]
+	\item Несоответствие арности функций числу и типам аргументов:
+	  \[
+	  f = \sin (x, y, z).
+	  \]
+	\item Несовпадение областей определения и значений:
+	  \[
+	  f = \sqrt{-x^2}.
+	  \]
+	\item Порождение слишком сложных суперпозиций.
+  \end{itemize}
+\end{frame}
+
+\begin{frame}{Постановка теоретической задачи}
+  \frametitle{Постановка теоретической задачи}
+
+  Пусть $G = \{ g_1, \dots, g_l \}$~--- множество данных порождающих
+  функций; для каждой $g_i \in G$ заданы:
+  \begin{itemize}
+	\item функция (например, $\sin$, $\cos$, $\times$),
+	\item арность функции и~порядок следования аргументов,
+	\item тип аргументов ($\text{dom} g_i$) и тип значения ($\text{cod} g_i$) функции,
+	\item область определения $\mathcal{D} g_i \subset \text{dom} g_i$ и~область
+	  значений $\mathcal{E} g_i \subset \text{cod} g_i$.
+  \end{itemize}
+  Требуется:
+  \begin{itemize}
+	\item построить алгоритм, за конечное число итераций
+	  порождающий любую конечную суперпозицию данных примитивных функций,
+	\item oценить сложность полученного алгоритма,
+	\item доказать полноту полученного алгоритма.
+  \end{itemize}
+\end{frame}
+
+%\begin{frame}{Постановка теоретической задачи}
+%  \frametitle{Постановка теоретической задачи}
+%
+%  Для функции $f(x_1, x_2) = \log_{x_1} x_2$:
+%  \[
+%	\text{dom} f = \mathbb{R} \times \mathbb{R},
+%  \]
+%  \[
+%	\text{cod} f = \mathbb{R},
+%  \]
+%  \[
+%	\mathcal{D} f = \{ (x_1, x_2) \mid x_1 \in (0; 1) \cup (1; +\infty), x_2 \in (0; +\infty) \},
+%  \]
+%  \[
+%	\mathcal{E} f = (-\infty; +\infty).
+%  \]
+%\end{frame}
+
+%\begin{frame}{Дерево суперпозиции}
+%  \frametitle{Дерево суперпозиции}
+%  Каждой суперпозиции $f$ сопоставлено дерево $\Gamma_f$.
+%
+%  \begin{itemize}
+%	\item В~вершинах $V_i$ дерева $\Gamma_f$ находятся соответствующие
+%	  порождающие функции $g_s, s = s(i)$.
+%	\item Число дочерних вершин у некоторой вершины $V_i$ равно арности
+%	  соответствующей функции $g_s$.
+%	\item Порядок смежных некоторой вершине $V_i$ вершин соотвествует порядку
+%	  аргументов соответствующей функции $g_{s(i)}$.
+%	\item В~листьях дерева $\Gamma_f$ находятся свободные переменные $x_i$
+%	  либо числовые параметры $\omega_i$.
+%	\end{itemize}
+%\end{frame}
+
+\begin{frame}[fragile]
+  \frametitle{Дерево суперпозиции}
+
+  \begin{figure}[h]
+	\centering
+	\begin{tikzpicture}
+	  \scalefont{2}
+	  \tikzstyle{n} = [draw, inner sep=2pt, fill=red!20]
+		\begin{dot2tex}[dot,options=-tmath,scale=0.3]
+		  digraph G1 {
+			node [shape="circle",style="n"];
+			
+			Plus [label="\bullet + \bullet"];
+			Sin [label="\sin \bullet"];
+			Ln [label="\ln \bullet"];
+			X1 [label="x_1"];
+			Frac [label="\div"];
+			Pow [label="\bullet^{\bullet}"];
+			X2 [label="x_2"];
+			N3 [label="3"];
+			N2 [label="2"];
+
+			Plus -> Sin;
+			Sin -> Ln;
+			Ln -> X1;
+
+			Plus -> Frac;
+			Frac -> Pow;
+			Frac -> N2;
+
+			Pow -> X2;
+			Pow -> N3;
+		  }
+		\end{dot2tex}
+	  \end{tikzpicture}
+  \end{figure}
+
+  \[
+  f = \sin (\ln x_1) + \frac{x_2^3}{2}.
+  \]
+\end{frame}
+
+\begin{frame}{Индуктивное порождение суперпозиций}
+  \frametitle{Алгоритм индуктивного порождения суперпозиций}
+	
+	\[
+	G = G_b \cup G_u; X = \{ x_1, \dots, x_n \}.
+	\]
+
+	\begin{enumerate}
+	  \item Инициализация:
+		\[
+		  \mathcal{F}_0 = X,
+		\]
+		\[
+		  \mathcal{I} = \{ (x, 0) \mid x \in X \}.
+		\]
+	  \item Вспомогательные множества:
+		\[
+		  U_i = \{ g_u \circ f \mid g_u \in G_u, f \in \mathcal{F}_i \},
+		\]
+		\[
+		  B_i = \{ g_b \circ (f, h) \mid g_b \in G_b, f, h \in \mathcal{F}_i \}.
+		\]
+	  \item $\mathcal{F}_{i+1} = \mathcal{F}_i \cup U_i \cup B_i$.
+	  \item $\mathcal{I} = \mathcal{I} \cup (f, i + 1)$, если $f$ не присутствует
+		в $\mathcal{I}$.
+	\end{enumerate}
+
+	Множество всех возможных суперпозиций $\mathcal{F} = \cup_{i=0}^{\infty} \mathcal{F}_i$.
+\end{frame}
+
+%\begin{frame}
+%  \frametitle{Функции многих переменных и параметрические модели}
+%
+%  \begin{itemize}
+%	\item Для множества функций $G_n$ арности $n$ вспомогательное множество $H_i^n$:
+%	  \[
+%	  H_i^n = \{ g \circ (f_1, f_2, \dots, f_n) \mid g \in G_n, f_j \in \mathcal{F}_i \},
+%	  \]
+%	  тогда $\mathcal{F}_{i+1} = \mathcal{F}_i \cup_{n=0}^{n_{max}} H_i^n$ (кроме того, $U_i \equiv H_i^1$, а $B_i \equiv H_i^2$).
+%
+%	  Множество всех возможных суперпозиций $\mathcal{F} = \cup_{i=0}^{\infty} \mathcal{F}_i$.
+%	\item Изменим вспомогательные множества:
+%	  \[
+%	  U_i = { g_u \circ (\alpha f + \beta) },
+%	  \]
+%	  \[
+%	  B_i = { g_b \circ (\alpha f + \beta, \psi h + \phi) }.
+%	  \]
+%	  Переменные $\alpha, \beta, \psi, \phi$~--- параметры модели.
+%  \end{itemize}
+%\end{frame}
+
+\begin{frame}
+  \frametitle{Оценка сложности и стохастический алгоритм}
+  
+  \begin{theo}
+	Предложенный алгоритм породит любую конечную суперпозицию за конечное число шагов.
+  \end{theo}
+
+  \begin{theo}
+	Пусть в множестве примитивных функций $G$ содержится $l_p$ функций арности
+	$p > 1$ и ни одной функции арности $p + k \mid k > 0$, и имеется $n > 1$
+	независимых переменных. Тогда справедлива следующая оценка количества
+	суперпозиций, порожденных предложенным алгоритмом после $k$-ой итерации:
+	\[
+	| \mathcal{F}_k | = \mathcal{O} (l_p^{\sum_{i=0}^{k-1} p^i} n^{p^k}).
+	\]
+  \end{theo}
+
+  \begin{itemize}
+	\item Суперпозиции порождаются случайным образом.
+	\item Наименее удачные суперпозиции изменяются с сохранением структуры.
+	\item Наиболее удачные суперпозиции комбинируются.
+  \end{itemize}
+\end{frame}
+
+\begin{frame}
+  \frametitle{Критерий выбора моделей}
+
+  \[
+  Q_f = \frac{1}{1 + S_f} \left(\alpha + \frac{1 - \alpha}{1 + \text{exp} (\frac{C_f}{\beta} - \tau)}\right).
+  \]
+  \begin{itemize}
+	\item $S_f$~--- функционал ошибки.
+	\item $C_f$~--- сложность модели.
+	\item $\alpha$~--- коэффициент влияния штрафа за сложность, $0 \ll \alpha < 1$,
+	\item $\beta$~--- коэффициент строгости штрафа за сложность, $\beta > 0$,
+	\item $\tau$~--- коэффициент, характеризующий желаемую сложность модели.
   \end{itemize}
 \end{frame}
 
@@ -190,19 +439,14 @@
   \end{itemize}
 \end{frame}
 
-\begin{frame}{Алгоритм порождения моделей}
+\begin{frame}{Порождение моделей}
   \[
     Q(f) = \frac{1}{1 + S(f)} \left(\alpha + \frac{1 - \alpha}{1 + \text{exp} (\frac{C(f)}{\beta} - \tau)}\right).
   \]
-  \begin{itemize}
-    \item $\alpha$~--- влияние штрафа за сложность, $0 \ll \alpha < 1$,
-    \item $\beta > 0$~--- строгость штрафа за сложность,
-    \item $\tau$~--- желаемая сложность модели.
-  \end{itemize}
 
   \begin{figure}[h]
     \vspace{-20pt}
-    \includegraphics[scale=0.5]{figs/fitness.eps}
+    \includegraphics[scale=0.8]{figs/fitness.eps}
     \vspace{-30pt}
   \end{figure}
 \end{frame}
