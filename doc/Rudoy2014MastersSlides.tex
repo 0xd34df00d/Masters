@@ -109,9 +109,12 @@
   \begin{enumerate}
     \setcounter{enumi}{2}
     \item Варьируется выборка:
-      \[
-        \acute{D}(\Sigma^{\mathbf{x}}, \boldsymbol{\sigma}^y) = \{ \mathbf{x}_i + \boldsymbol{\xi}^{\mathbf{x}}_i, y_i + \xi^y_i \mid i \in 1, \dots, \ell \}.
-      \]
+      \begin{align*}
+        \acute{D}(\Sigma^{\mathbf{x}}, \boldsymbol{\sigma}^y) = \{ \mathbf{x}_i + \boldsymbol{\xi}^{\mathbf{x}}_i, y_i + \xi^y_i \mid\ &i \in 1, \dots, \ell;\\
+        & \boldsymbol{\xi}^{\mathbf{x}}_i \sim \mathcal{N}(0; \boldsymbol{\sigma}^{\mathbf{x}}_{i \cdot}); \\
+        & \xi^y_i \sim \mathcal{N}(0; \sigma^y_i) \},
+      \end{align*}
+      где $\Sigma^{\mathbf{x}} = \Vert \boldsymbol{\sigma}^{\mathbf{x}}_{ij} \Vert$.
     \item Оптимальный вектор параметров для варьированной выборки $\acute{D}$:
       \[
     		\hat{\boldsymbol{\omega}}_f (\acute{D} (\Sigma^{\mathbf{x}}, \boldsymbol{\sigma}_y)) = \mathop{\arg \min}\limits_{\boldsymbol{\omega}_f} S (f (\cdot, \boldsymbol{\omega}_f), \acute{D} (\Sigma^{\mathbf{x}}, \boldsymbol{\sigma}_y)).
