@@ -87,13 +87,13 @@
 \begin{frame}{Символьная регрессия}
   Аппроксимация выборки некоторой формулой:
   \[
-  y = \sin x_1^2 + 2x_2.
+  n(\lambda) = \omega_1 + \frac{\omega_2}{\lambda^2} + \frac{\omega_3}{\lambda^4}
   \]
 
   Методы:
   \begin{itemize}
-	\item Генетические алгоритмы [Koza1998].
-	\item Аналитическое программирование [Zelinka2008, Webb2010].
+	\item Генетические алгоритмы [Koza 1998].
+	\item Аналитическое программирование [Zelinka 2008, Webb 2010].
   \end{itemize}
 \end{frame}
 
@@ -312,7 +312,7 @@
      \[
 	   D = \{ \mathbf{x}_i, y_i \} \mid i \in \{ 1, \dots, \ell \}.
      \]
-   \item Семейство $\mathcal{F}$ параметрических функций $f = f(\mathbf{x}, \boldsymbol{\omega})$.
+   \item Семейство $\mathcal{F}$ параметрических моделей $f = f(\mathbf{x}, \boldsymbol{\omega})$.
    \item Функционал качества $S$:
      \[
        S = S (f (\cdot, \boldsymbol{\omega}), D) \mid f \in \mathcal{F}, \quad S \rightarrow \mathop{\min}\limits_{\boldsymbol{\omega}}
@@ -321,24 +321,20 @@
   
   Требуется:
   \begin{itemize}
-    \item Исследовать зависимость $\hat{\boldsymbol{\omega}} = \mathop{\arg \min}\limits_{\boldsymbol{\omega}} S$ от вариации $D$.
-    \item Выбрать оптимальную модель согласно зависимости от вариации $D$.
+    \item Исследовать зависимость $\hat{\boldsymbol{\omega}} = \mathop{\arg \min}\limits_{\boldsymbol{\omega}} S$ от вариации $D$ для фиксированной $f$.
+    \item Выбрать оптимальную модель $f$ согласно зависимости от вариации $D$.
     \item Проверить возможность экспертного применения $f$ при данной вариации $D$.
   \end{itemize}
 \end{frame}
 
 \begin{frame}{Известные результаты}
   \begin{itemize}
-    \item Случай линейной регрессии:
-      \[
-        y_i = ax_i + b + \xi_i \mid i \in \{ 1, \dots, n \}, \xi_i \in \mathcal{N} (0, \sigma).
-      \]
-    \item Влияние пертурбаций на решения оптимизационных задач [Bonnans1998].
-    \item Верхние границы ошибок в SVM [Vapnik2000].
-    \item Сравнение стабильности и обобщающей способности при варьировании обучающей выборки [Bousquet2002].
-    \item Вычислительная стабильность интерполяции [Higham2003].
-    \item Стабильность алгоритмов кластеризации [Luxburg2009].
-    \item Малые изменения входных данных в сетях глубокого обучения [Szegedy2014].
+    \item Влияние пертурбаций на решения оптимизационных задач [Bonnans 1998].
+    \item Верхние границы ошибок в SVM [Vapnik 2000].
+    \item Сравнение стабильности и обобщающей способности при варьировании обучающей выборки [Bousquet 2002].
+    \item Вычислительная стабильность интерполяции [Higham 2003].
+    \item Стабильность алгоритмов кластеризации [Luxburg 2009].
+    \item Малые изменения входных данных в сетях глубокого обучения [Szegedy 2014].
   \end{itemize}
 \end{frame}
 
@@ -452,7 +448,7 @@
 
   \begin{figure}[h]
     \vspace{-20pt}
-    \includegraphics[scale=0.8]{figs/fitness.eps}
+    \includegraphics[scale=0.8]{figs/fitness.pdf}
     \vspace{-30pt}
   \end{figure}
 \end{frame}
@@ -531,7 +527,7 @@
 \begin{frame}{Лагранжева интерполяция}
   Существенно переобученная модель:
   \[
-    L(x) = \prod_{i = 0}^\ell y_i \prod_{j = 0, j \neq i}^\ell \frac{x - x_j}{x_i - x_j},
+    L(x) = \prod_{i = 0}^\ell y_i \prod_{j = 0, j \neq i}^\ell \frac{x - x_j}{x_i - x_j}.
   \]
   \begin{table}[h]
     \centering
